@@ -1,8 +1,26 @@
-// @ts-check
-import withNuxt from './.nuxt/eslint.config.mjs'
+import antfu from '@antfu/eslint-config'
 
-export default withNuxt({
-  rules: {
-    '@typescript-eslint/no-explicit-any': 'off'
-  }
-})
+export default antfu(
+  {
+    formatters: true,
+    ignores: [
+      'patches',
+      'playgrounds',
+      '**/.nuxt/**',
+      '**/database/**',
+      '**/types',
+      '**/server/types/worker-configuration.d.ts',
+      '**/cache',
+      '**/dist',
+      '**/.temp',
+      '**/*.svg',
+      '**/*.md',
+      '**/*.toml',
+    ],
+  },
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+)

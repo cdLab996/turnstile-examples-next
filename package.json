@@ -1,32 +1,27 @@
 {
-  "name": "nuxt-ui-pro-template-saas",
-  "private": true,
+  "name": "@cdlab996/turnstile-monorepo",
   "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+  "private": true,
+  "packageManager": "pnpm@9.5.0",
+  "description": "A simple and efficient URL shortener",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdLab996/turnstile-examples-nuxt.git"
   },
-  "dependencies": {
-    "@iconify-json/heroicons": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.3",
-    "@nuxt/content": "^2.13.2",
-    "@nuxt/fonts": "^0.8.0",
-    "@nuxt/image": "^1.8.0",
-    "@nuxt/ui-pro": "^1.4.2",
-    "@vueuse/nuxt": "^11.1.0",
-    "nuxt": "^3.13.2",
-    "nuxt-og-image": "^3.0.2"
+  "engines": {
+    "node": ">=18.20.3 || >=20.0.0"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "clean": "bash ./scripts/clean.sh",
+    "prepare": "bash ./scripts/init.sh",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.5.7",
-    "@nuxthq/studio": "^2.1.1",
-    "@nuxtjs/turnstile": "^0.9.10",
+    "@antfu/eslint-config": "^3.5.0",
+    "@types/node": "^22.2.0",
     "eslint": "^9.10.0",
-    "vue-tsc": "^2.1.6"
+    "typescript": "^5.5.4"
   }
 }
