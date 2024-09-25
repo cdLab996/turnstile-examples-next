@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxthq/studio',
     '@vueuse/nuxt',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    '@nuxtjs/turnstile'
   ],
 
   hooks: {
@@ -37,6 +38,14 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  vite: {
+    server: {
+      hmr: {
+        protocol: 'wss'
+      }
+    }
+  },
+
   typescript: {
     strict: false
   },
@@ -51,6 +60,17 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  turnstile: {
+    siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY
+  },
+
+  runtimeConfig: {
+    debug: process.env.NUXT_DEBUG === 'true',
+    turnstile: {
+      secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY
     }
   },
 

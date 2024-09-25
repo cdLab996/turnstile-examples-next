@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { NuxtTurnstile } from '#components'
+
 definePageMeta({
   layout: 'auth'
 })
@@ -6,6 +8,9 @@ definePageMeta({
 useSeoMeta({
   title: 'Sign up'
 })
+
+const token = ref()
+const turnstile = ref<InstanceType<typeof NuxtTurnstile> | null>()
 
 const fields = [{
   name: 'name',
@@ -64,6 +69,13 @@ function onSubmit(data: any) {
           to="/login"
           class="text-primary font-medium"
         >Login</NuxtLink>.
+      </template>
+      <template #validation>
+        <NuxtTurnstile
+          ref="turnstile"
+          v-model="token"
+          :options="{ action: 'native', language: 'en' }"
+        />
       </template>
 
       <template #footer>
