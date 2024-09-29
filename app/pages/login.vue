@@ -11,6 +11,7 @@ useSeoMeta({
 
 const token = ref()
 const turnstile = ref<InstanceType<typeof NuxtTurnstile> | null>()
+const show = ref(false)
 
 const fields = [{
   name: 'email',
@@ -43,6 +44,10 @@ const providers = [{
 function onSubmit(data: any) {
   console.log('Submitted', data)
 }
+
+onMounted(() => {
+  show.value = true
+})
 </script>
 
 <!-- eslint-disable vue/multiline-html-element-content-newline -->
@@ -75,6 +80,7 @@ function onSubmit(data: any) {
       </template>
       <template #validation>
         <NuxtTurnstile
+          v-if="show"
           ref="turnstile"
           v-model="token"
           :options="{ action: 'native', language: 'en' }"
